@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'coleccion', #agrego la app para la gestion de colecciones del portal
 
 ]
 
