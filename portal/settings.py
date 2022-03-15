@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'coleccion', #agrego la app para la gestion de colecciones del portal
-    'cuentas' #agrego la app cuentas para la gestion de usuarios del portal
+    'cuentas', #agrego la app cuentas para la gestion de usuarios del portal
+    'tienda', #agrego la app tienda para la gestion productos
 ]
 
 MIDDLEWARE = [
