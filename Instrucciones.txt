@@ -1,2 +1,2 @@
-Usuario Administrador --> admin
-password --> adim1234
+Usuario Administrador --> riccitelli.fernando@gmail.com
+password --> mini1234

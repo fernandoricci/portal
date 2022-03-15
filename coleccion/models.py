@@ -13,5 +13,5 @@ class Coleccion(models.Model):
         verbose_name_plural = "colecciones"
 
     def __str__(self):
-        return self.category_name
+        return self.coleccion_nombre
     

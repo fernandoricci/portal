@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'coleccion', #agrego la app para la gestion de colecciones del portal
-
+    'cuentas' #agrego la app cuentas para la gestion de usuarios del portal
 ]
 
 MIDDLEWARE = [
@@ -70,6 +70,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'portal.wsgi.application'
+
+AUTH_USER_MODEL = 'cuentas.Account'
 
 
 # Database
@@ -124,6 +126,10 @@ STATIC_ROOT = BASE_DIR /'static' #carpeta static del directorio raiz del proyect
 STATICFILES_DIRS = [
     'portal/static' #Directorio de recursos media 
 ]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR /'media'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
