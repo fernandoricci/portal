@@ -11,7 +11,7 @@
             <aside class="col-md-6">
     <article class="gallery-wrap"> 
         <div class="img-big-wrap">
-           <a href="#"><img src="./images/items/12.jpg"></a>
+           <a href="#"><img src="{{producto_unico.imagenes.url}}"></a>
         </div> <!-- img-big-wrap.// -->
         
     </article> <!-- gallery-wrap .end// -->
@@ -19,13 +19,13 @@
             <main class="col-md-6 border-left">
     <article class="content-body">
     
-    <h2 class="title">Headphones Bose</h2>
+    <h2 class="title">{{producto_unico.producto_nombre}}</h2>
     
     <div class="mb-3"> 
-        <var class="price h4">$815.00</var> 
+        <var class="price h4">$ {{producto_unico.precio}}</var> 
     </div> 
     
-    <p>Virgil Abloh’s Off-White is a streetwear-inspired collection that continues to break away from the conventions of mainstream fashion. Made in Italy, these black and brown Odsy-1000 low-top sneakers.</p>
+    <p>{{producto_unico.descripcion}}</p>
     
     
     <hr>
@@ -68,7 +68,17 @@
             </div>
         </div> <!-- row.// -->
         <hr>
-        <a href="./product-detail.html" class="btn  btn-primary"> <span class="text">Agregar al shopping cart</span> <i class="fas fa-shopping-cart"></i>  </a>
+
+        <!-- Controlo la existencia de stock para habilitar el boton de agregar al carrito -->
+        {% if producto_unico.stock <= 0 %}
+          <h5>Producto agotado</h5>
+        {% else %}
+        <a href="./product-detail.html" class="btn  btn-primary"> 
+          <span class="text">Agregar al carrito</span> 
+          <i class="fas fa-shopping-cart"></i>  
+        </a>
+        {% endif %}
+
     </article> <!-- product-info-aside .// -->
             </main> <!-- col.// -->
         </div> <!-- row.// -->
@@ -81,7 +91,7 @@
                 <div class="col-md-9">
     
         <header class="section-heading">
-            <h3>Customer Reviews </h3>  
+            <h3>Opiniones</h3>  
             
         </header>
     
@@ -89,8 +99,8 @@
             <div class="icontext w-100">
                 <img src="./images/avatars/avatar1.jpg" class="img-xs icon rounded-circle">
                 <div class="text">
-                    <span class="date text-muted float-md-right">24.04.2020 </span>  
-                    <h6 class="mb-1">Mike John </h6>
+                    <span class="date text-muted float-md-right">24.03.2022 </span>  
+                    <h6 class="mb-1">Juan Perez</h6>
                     
                 </div>
             </div> <!-- icontext.// -->

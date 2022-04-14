@@ -20,7 +20,7 @@
 <div class="container">
 
 <header class="section-heading">
-	<a href="./store.html" class="btn btn-outline-primary float-right">Ver Todo</a>
+	<a href="{% url 'tienda' %}" class="btn btn-outline-primary float-right">Ver Todo</a>
 	<h3 class="section-title">Libros populares</h3>
 </header><!-- sect-heading -->
 
@@ -31,9 +31,9 @@
 	
 	<div class="col-md-3">
 		<div class="card card-product-grid">
-			<a href="./tienda/producto_detalle.html" class="img-wrap"> <img src="{{producto.imagenes.url}}"> </a>
+			<a href="{{producto.get_url}}" class="img-wrap"> <img src="{{producto.imagenes.url}}"> </a>
 			<figcaption class="info-wrap">
-				<a href="./tienda/producto_detalle.html" class="title">{{producto.producto_nombre}}</a>
+				<a href="{{producto.get_url}}" class="title">{{producto.producto_nombre}}</a>
 				<div class="price mt-1">$ {{producto.precio}}</div> <!-- price-wrap.// -->
 			</figcaption>
 		</div>
