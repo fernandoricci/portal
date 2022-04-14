@@ -26,78 +26,21 @@
 
 	
 <div class="row">
+	
+	{% for producto in productos %}
+	
 	<div class="col-md-3">
 		<div class="card card-product-grid">
-			<a href="./product-detail.html" class="img-wrap"> <img src="{% static 'images/items/libro1.jpg' %}"> </a>
+			<a href="./tienda/producto_detalle.html" class="img-wrap"> <img src="{{producto.imagenes.url}}"> </a>
 			<figcaption class="info-wrap">
-				<a href="./product-detail.html" class="title">Ensayo potencial bioquímico metanogénico</a>
-				<div class="price mt-1">$1200.00</div> <!-- price-wrap.// -->
+				<a href="./tienda/producto_detalle.html" class="title">{{producto.producto_nombre}}</a>
+				<div class="price mt-1">$ {{producto.precio}}</div> <!-- price-wrap.// -->
 			</figcaption>
 		</div>
 	</div> <!-- col.// -->
-	<div class="col-md-3">
-		<div class="card card-product-grid">
-			<a href="./product-detail.html" class="img-wrap"> <img src="{% static 'images/items/libro2.jpg' %}"> </a>
-			<figcaption class="info-wrap">
-				<a href="./product-detail.html" class="title">58 años de aportes del INTA Famaillá para Tucumán y el País</a>
-				<div class="price mt-1">$750.00</div> <!-- price-wrap.// -->
-			</figcaption>
-		</div>
-	</div> <!-- col.// -->
-	<div class="col-md-3">
-		<div class="card card-product-grid">
-			<a href="./product-detail.html" class="img-wrap"> <img src="{% static 'images/items/libro3.jpg' %}"> </a>
-			<figcaption class="info-wrap">
-				<a href="./product-detail.html" class="title">Plan Estratégico Institucional 2015-2030</a>
-				<div class="price mt-1">$299.00</div> <!-- price-wrap.// -->
-			</figcaption>
-		</div>
-	</div> <!-- col.// -->
-	<div class="col-md-3">
-		<div class="card card-product-grid">
-			<a href="./product-detail.html" class="img-wrap"> <img src="{% static 'images/items/libro4.jpg' %}"> </a>
-			<figcaption class="info-wrap">
-				<a href="./product-detail.html" class="title">Los plaguicidas agregados al suelo y su destino en el ambiente</a>
-				<div class="price mt-1">$2000.00</div> <!-- price-wrap.// -->
-			</figcaption>
-		</div>
-	</div> <!-- col.// -->
-	<div class="col-md-3">
-		<div class="card card-product-grid">
-			<a href="./product-detail.html" class="img-wrap"> <img src="{% static 'images/items/libro5.jpg' %}"> </a>
-			<figcaption class="info-wrap">
-				<a href="./product-detail.html" class="title">Enfermedades de soja: diagnóstico y manejo</a>
-				<div class="price mt-1">$1500.00</div> <!-- price-wrap.// -->
-			</figcaption>
-		</div>
-	</div> <!-- col.// -->
-	<div class="col-md-3">
-		<div class="card card-product-grid">
-			<a href="./product-detail.html" class="img-wrap"> <img src="{% static 'images/items/libro6.jpg' %}"> </a>
-			<figcaption class="info-wrap">
-				<a href="./product-detail.html" class="title">Floricultura - Pasado y presente de la floricultura argentina</a>
-				<div class="price mt-1">$2560.00</div> <!-- price-wrap.// -->
-			</figcaption>
-		</div>
-	</div> <!-- col.// -->
-	<div class="col-md-3">
-		<div class="card card-product-grid">
-			<a href="./product-detail.html" class="img-wrap"> <img src="{% static 'images/items/libro7.jpg' %}"> </a>
-			<figcaption class="info-wrap">
-				<a href="./product-detail.html" class="title">El ambiente en tus manos: concurso literario infanto juvenil</a>
-				<div class="price mt-1">$600.00</div> <!-- price-wrap.// -->
-			</figcaption>
-		</div>
-	</div> <!-- col.// -->
-	<div class="col-md-3">
-		<div class="card card-product-grid">
-			<a href="./product-detail.html" class="img-wrap"> <img src="{% static 'images/items/libro8.jpg' %}"> </a>
-			<figcaption class="info-wrap">
-				<a href="./product-detail.html" class="title">Una aproximación a la complejidad del territorio</a>
-				<div class="price mt-1">$1179.00</div> <!-- price-wrap.// -->
-			</figcaption>
-		</div>
-	</div> <!-- col.// -->
+	
+	{% endfor %}
+
 </div> <!-- row.// -->
 
 </div><!-- container // -->

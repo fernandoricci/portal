@@ -36,14 +36,14 @@
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> 
                     <i class="fa fa-bars"></i> Colecciones
                 </button>
+                
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Institucional </a>
-                    <a class="dropdown-item" href="#">Investigación</a>
-                    <a class="dropdown-item" href="#">Infanto-Juvenil</a>
-                    <a class="dropdown-item" href="#">Recursos</a>
-                    <a class="dropdown-item" href="#">Educación Superior</a>
-                    <a class="dropdown-item" href="#">Divulgación</a> 
+                    {% for coleccion in links %}
+                    <a class="dropdown-item" href="{{coleccion.get_url}}">{{coleccion.coleccion_nombre}}</a>
+                    {% endfor %}
+                    <a class="dropdown-item" href="{% url 'tienda' %}">Todas</a>
                 </div>
+            
             </div>  <!-- category-wrap.// -->
         </div> <!-- col.// -->
         <a href="./store.html" class="btn btn-outline-primary">Tienda</a>
