@@ -1,22 +1,65 @@
-<!-- ========================= FOOTER ========================= -->
-<footer class="section-footer border-top">
-	<div class="container">
-		<section class="footer-bottom border-top row">
-			<div class="col-md-2">
-				<p class="text-muted"> &copy INTA </p>
-			</div>
-			<div class="col-md-8 text-md-center">
-				<span  class="px-2">libreria@inta.gob.ar</span>
-				<span  class="px-2">+54 11 4339 0600</span>
-				<span  class="px-2">Chile 460, CABA</span>
-			</div>
-			<div class="col-md-2 text-md-right text-muted">
-				<i class="fab fa-lg fa-cc-visa"></i>
-				<i class="fab fa-lg fa-cc-mastercard"></i>
-                <i class="fab fa-lg fa-cc-paypal"></i>
-                <i class="far fa-handshake"></i>
-			</div>
-		</section>
-	</div><!-- //container -->
+{% load static %}
+<!-- Inicio del area del Footer -->
+<footer class="footer">
+    <!-- Footer Suscripción Newsletter -->
+    <div class="footer-top">
+        <div class="container">
+            <div class="inner-content">
+                <div class="row">
+                    <div class="col-lg-9 col-md-8 col-12">
+                        <div class="footer-newsletter">
+                            <h4 class="title">
+                                Subscribite a nuestro Newsletter
+                                <span>Obtene la última información sobre las publicaciones del INTA.</span>
+                            </h4>
+                            <div class="newsletter-form-head">
+                                <form action="#" method="get" target="_blank" class="newsletter-form">
+                                    <input name="EMAIL" placeholder="Dirección de email..." type="email">
+                                    <div class="button">
+                                        <button class="btn">Subscribir<span class="dir-part"></span></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fin Footer Suscripción Newsletter -->
+ 
+    <!-- Footer Bajo -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="inner-content">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 col-12">
+                        <div class="payment-gateway">
+                            <span>Aceptamos:</span>
+                            <img src="{% static 'images/footer/credit-cards-footer.png' %}" alt="#">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-12">
+                        <div class="copyright">
+                            <p>Desarrollado por<a href="#" rel="nofollow"
+                                    target="_blank">Fernando Riccitelli</a></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-12">
+                        <ul class="socila">
+                            <li>
+                                <span>Seguinos en:</span>
+                            </li>
+                            <li><a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a></li>
+                            <li><a href="javascript:void(0)"><i class="lni lni-twitter-original"></i></a></li>
+                            <li><a href="javascript:void(0)"><i class="lni lni-instagram"></i></a></li>
+                            <li><a href="javascript:void(0)"><i class="lni lni-google"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fin Footer Bajo -->
 </footer>
-<!-- ========================= FOOTER END // ========================= -->
+<!-- Fin del area del Footer -->

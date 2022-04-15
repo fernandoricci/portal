@@ -1,82 +1,121 @@
 {% load static %}
-<header class="section-header">
-    <nav class="navbar p-md-0 navbar-expand-sm navbar-light border-bottom">
-    <div class="container">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTop4" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarTop4">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item dropdown">
-                 <a href="#" class="nav-link">   Espanol </a>
-                
-            </li>
-            <li class="nav-item dropdown">
-                <a href="#" class="nav-link"> Inglés </a>
-            </li>
-        </ul>
-        <ul class="navbar-nav">
-            <li><a href="#" class="nav-link"> <i class="fa fa-envelope"></i> Email </a></li>
-            <li><a href="#" class="nav-link"> <i class="fa fa-phone"></i> Llamanos</a></li>
-        </ul> <!-- list-inline //  -->
-      </div> <!-- navbar-collapse .// -->
-    </div> <!-- container //  -->
-    </nav>
-    
-    <section class="header-main border-bottom">
-        <div class="container">
-    <div class="row align-items-center">
-        <div class="col-lg-2 col-md-3 col-6">
-            <a href="{% url 'home' %}" class="brand-wrap">
-                <img class="logo" src="{% static './images/logoINTA.jpg' %}">
-            </a> <!-- brand-wrap.// -->
-        </div>
-        <div class="col-lg col-sm col-md col-6 flex-grow-0">
-            <div class="category-wrap dropdown d-inline-block float-right">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> 
-                    <i class="fa fa-bars"></i> Colecciones
-                </button>
-                
-                <div class="dropdown-menu">
-                    {% for coleccion in links %}
-                    <a class="dropdown-item" href="{{coleccion.get_url}}">{{coleccion.coleccion_nombre}}</a>
-                    {% endfor %}
-                    <a class="dropdown-item" href="{% url 'tienda' %}">Todas</a>
-                </div>
-            
-            </div>  <!-- category-wrap.// -->
-        </div> <!-- col.// -->
-        <a href="{% url 'tienda' %}" class="btn btn-outline-primary">Tienda</a>
-        <div class="col-lg  col-md-6 col-sm-12 col">
-            <form action="#" class="search">
-                <div class="input-group w-100">
-                    <input type="text" class="form-control" style="width:60%;" placeholder="Search">
-                    
-                    <div class="input-group-append">
-                      <button class="btn btn-primary" type="submit">
-                        <i class="fa fa-search"></i>
-                      </button>
+
+    <!-- Barra de Navegación Superior -->
+     <header class="header navbar-area">
+        <div class="topbar">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 col-md-4 col-12">
+                        <div class="top-left">
+                            <ul class="menu-top-link">
+                                <li>
+                                    <div class="select-position">
+                                        <select id="select5">
+                                            <option value="0" selected>Español </option>
+                                            <option value="1">English</option>
+                                            <option value="3">Français</option>
+                                        </select>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-12">
+                        <div class="top-middle">
+                            <ul class="useful-links">
+                                <li><a href="{% url 'home' %}">Home</a></li>
+                                <li><a href="{% url 'tienda' %}">La Librería</a></li>
+                                <li><a href="contact.html">Contactanos</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-12">
+                        <div class="top-end">
+                            <div class="user">
+                                <i class="lni lni-user"></i>
+                                Hola!
+                            </div>
+                            <ul class="user-login">
+                                <li>
+                                    <a href="login.html">Login</a>
+                                </li>
+                                <li>
+                                    <a href="register.html">Registrese</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </form> <!-- search-wrap .end// -->
-        </div> <!-- col.// -->
-        <div class="col-lg-3 col-sm-6 col-8 order-2 order-lg-3">
-                    <div class="d-flex justify-content-end mb-3 mb-lg-0">
-                        <div class="widget-header">
-                            <small class="title text-muted">Bienvenido visitante!</small>
-                            <div> 
-                                <a href="./signin.html">Login</a> <span class="dark-transp"> | </span>
-                                <a href="./register.html">Registrar</a>
+            </div>
+        </div>
+        <!-- Barra de Navegación Superior -->
+
+        <!-- Barra de Navegación intermedia -->
+        <div class="header-middle">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-3 col-md-3 col-7">
+                        <!-- Logo del encabezado -->
+                        <a class="navbar-brand" href="{% url 'home' %}">
+                            <img src="{% static './images/logoINTA.jpg' %}" alt="Logo">
+                        </a>
+                        <!-- Fin logo del encabezado -->
+                    </div>
+                    <div class="col-lg-5 col-md-7 d-xs-none">
+                        <!-- Buscador principal -->
+                        <div class="main-menu-search">
+                            <!-- buscador del navbar -->
+                            <div class="navbar-search search-style-5">
+                                <div class="search-select">
+                                    <div class="select-position">
+                                        <select id="select1">
+                                            <option selected>Todas</option>
+                                            {% for coleccion in links %}
+                                            <option>{{coleccion.coleccion_nombre}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="search-input">
+                                    <input type="text" placeholder="Buscar">
+                                </div>
+                                <div class="search-btn">
+                                    <button><i class="lni lni-search-alt"></i></button>
+                                </div>
+                            </div>
+                            <!-- Fin de buscador del navbar -->
+                        </div>
+                        <!-- Buscador principal -->
+                    </div>
+                    <div class="col-lg-4 col-md-2 col-5">
+                        <div class="middle-right-area">
+                            <div class="nav-hotline">
+                                <i class="lni lni-phone"></i>
+                                <h3>Venta Telefónica:
+                                    <span>(+54) 1 4339 0600</span>
+                                </h3>
+                            </div>
+                            <div class="navbar-cart">
+                                <!-- Lista de favoritos -->
+                                <div class="wishlist">
+                                    <a href="javascript:void(0)">
+                                        <i class="lni lni-heart"></i>
+                                        <span class="total-items">0</span>
+                                    </a>
+                                </div>
+                                <!-- Fin Lista de favoritos -->
+                                <!-- Carrito de compras -->
+                                <div class="cart-items">
+                                    <a href="javascript:void(0)" class="main-btn">
+                                        <i class="lni lni-cart"></i>
+                                        <span class="total-items">0</span>
+                                    </a>    
+                                <!-- Fin del carrito de compras-->
+                                </div>
                             </div>
                         </div>
-                        <a href="./cart.html" class="widget-header pl-3 ml-3">
-                            <div class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></div>
-                            <span class="badge badge-pill badge-danger notify">0</span>
-                        </a>
-                    </div> <!-- widgets-wrap.// -->
-                </div> <!-- col.// -->
-    </div> <!-- row.// -->
-        </div> <!-- container.// -->
-    </section> <!-- header-main .// -->
-    
-</header> <!-- section-header.// -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Fin Barra de Navegación intermedia  -->

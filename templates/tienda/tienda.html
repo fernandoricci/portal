@@ -2,163 +2,154 @@
 
 {% block content %}
 
-<!-- ========================= SECTION PAGETOP ========================= -->
-<section class="section-pagetop bg">
+<!-- Start Product Grids -->
+<section class="product-grids section">
     <div class="container">
-        <h2 class="title-page">Nuestra Tienda</h2>
-        
-    </div> <!-- container //  -->
-    </section>
-    <!-- ========================= SECTION INTRO END// ========================= -->
-
-    <!-- ========================= SECTION CONTENT ========================= -->
-<section class="section-content padding-y">
-    <div class="container">
-    
-    <div class="row">
-        <aside class="col-md-3">
-            
-    <div class="card">
-        <article class="filter-group">
-            <header class="card-header">
-                <a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" class="">
-                    <i class="icon-control fa fa-chevron-down"></i>
-                    <h6 class="title">Categorias</h6>
-                </a>
-            </header>
-            <div class="filter-content collapse show" id="collapse_1" style="">
-                <div class="card-body">
-                    
-                    <ul class="list-menu">                        
-                    {% for coleccion in links %}
-                        <li><a href="{{coleccion.get_url}}">{{coleccion.coleccion_nombre}}</a></li>
-                    {% endfor %}
-                        <li><a href="{% url 'tienda' %}">Todas</a></li>
-                    </ul>
-    
-                </div> <!-- card-body.// -->
-            </div>
-        </article> <!-- filter-group  .// -->
-        <article class="filter-group">
-            <header class="card-header">
-                <a href="#" data-toggle="collapse" data-target="#collapse_4" aria-expanded="true" class="">
-                    <i class="icon-control fa fa-chevron-down"></i>
-                    <h6 class="title">Formatos </h6>
-                </a>
-            </header>
-            <div class="filter-content collapse show" id="collapse_4" style="">
-                <div class="card-body">
-                  <label class="checkbox-btn">
-                    <input type="checkbox">
-                    <span class="btn btn-light"> Digital </span>
-                  </label>
-    
-                  <label class="checkbox-btn">
-                    <input type="checkbox">
-                    <span class="btn btn-light"> Impreso </span>
-                  </label>
-    
-    
-            </div><!-- card-body.// -->
-            </div>
-        </article> <!-- filter-group .// -->
-        
-        <article class="filter-group">
-            <header class="card-header">
-                <a href="#" data-toggle="collapse" data-target="#collapse_3" aria-expanded="true" class="">
-                    <i class="icon-control fa fa-chevron-down"></i>
-                    <h6 class="title">Precios </h6>
-                </a>
-            </header>
-            <div class="filter-content collapse show" id="collapse_3" style="">
-                <div class="card-body">
-                    
-                    <div class="form-row">
-                    <div class="form-group col-md-6">
-                      <label>Min</label>
-                      <!-- <input class="form-control" placeholder="$0" type="number"> -->
-                          <select class="mr-2 form-control">
-                            <option value="0">$0</option>
-                            <option value="500">$500</option>
-                            <option value="1000">$1000</option>
-                            <option value="1500">$1500</option>
-                            <option value="2000">$2000</option>
-                            <option value="5000">$5000</option>
-                            <option value="10000">$10000</option>
-                        </select>
+        <div class="row">
+            <div class="col-lg-3 col-12">
+                <!-- Start Product Sidebar -->
+                <div class="product-sidebar">
+                    <!-- Start Single Widget -->
+                    <div class="single-widget search">
+                        <h3>Buscar producto</h3>
+                        <form action="#">
+                            <input type="text" placeholder="Buscar aquí...">
+                            <button type="submit"><i class="lni lni-search-alt"></i></button>
+                        </form>
                     </div>
-                    <div class="form-group text-right col-md-6">
-                      <label>Max</label>
-                          <select class="mr-2 form-control">
-                            <option value="500">$500</option>
-                            <option value="1000">$1000</option>
-                            <option value="1500">$1500</option>
-                            <option value="2000">$2000</option>
-                            <option value="5000">$5000</option>
-                            <option value="10000">$10000</option>
-                            <option value="20000">$20000+</option>
-                        </select>
+                    <!-- End Single Widget -->
+                    <!-- Start Single Widget -->
+                    <div class="single-widget">
+                        <h3>Colecciones</h3>
+                        <ul class="list">
+                            <li><a href="{% url 'tienda' %}">Todas</a></li>
+                            {% for coleccion in links %}
+                            <li>
+                                <a href="{{coleccion.get_url}}">{{coleccion.coleccion_nombre}}</a><span></span>
+                            </li>
+                            {% endfor %}
+                        </ul>
                     </div>
-                    </div> <!-- form-row.// -->
-                    <button class="btn btn-block btn-primary">Buscar</button>
-                </div><!-- card-body.// -->
-            </div>
-        </article> <!-- filter-group .// -->
-        
-    </div> <!-- card.// -->
-    
-        </aside> <!-- col.// -->
-        <main class="col-md-9">
-    
-    <header class="border-bottom mb-4 pb-3">
-            <div class="form-inline">
-                <span class="mr-md-auto"><b>{{productos_cuenta}}</b> Productos Encontrados</span>                
-            </div>
-    </header><!-- sect-heading -->
-    
-    <div class="row">
-        {% for producto in productos %}
-        <div class="col-md-4">
-            <figure class="card card-product-grid">
-                <div class="img-wrap"> 
-                    
-                    <a href="{{producto.get_url}}">
-                        <img src="{{producto.imagenes.url}}">
-                    </a>
-
-                </div> <!-- img-wrap.// -->
-                <figcaption class="info-wrap">
-                    <div class="fix-height">
-                        <a href="{{producto.get_url}}" class="title">{{producto.producto_nombre}}</a>
-                        <div class="price-wrap mt-2">
-                            <span class="price">$ {{producto.precio}}</span>                            
-                        </div> <!-- price-wrap.// -->
+                    <!-- End Single Widget -->
+                    <!-- Start Single Widget -->
+                    <div class="single-widget range">
+                        <h3>Rango de Precio</h3>
+                        <input type="range" class="form-range" name="range" step="1" min="100" max="10000"
+                            value="10" onchange="rangePrimary.value=value">
+                        <div class="range-inner">
+                            <label>$</label>
+                            <input type="text" id="rangePrimary" placeholder="100" />
+                        </div>
                     </div>
-                    <a href="#" class="btn btn-block btn-success">Agregar al carrito</a>
-                </figcaption>
-            </figure>
-        </div> <!-- col.// -->
-        {% endfor %}
+                    <!-- End Single Widget -->
+                    <!-- Start Single Widget -->
+                    <div class="single-widget condition">
+                        <h3>Filtrar por Precio</h3>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
+                            <label class="form-check-label" for="flexCheckDefault1">
+                                $0 - $500 (208)
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
+                            <label class="form-check-label" for="flexCheckDefault2">
+                                $501 - $999 (311)
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3">
+                            <label class="form-check-label" for="flexCheckDefault3">
+                                $1000 - $4,999 (485)
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4">
+                            <label class="form-check-label" for="flexCheckDefault4">
+                                $5,000 - $10,000 (213)
+                            </label>
+                        </div>
+                    </div>
+                    <!-- End Single Widget -->
+                </div>
+                <!-- End Product Sidebar -->
+            </div>
+            <div class="col-lg-9 col-12">
+                <div class="product-grids-head">
+                    <div class="product-grid-topbar">
+                        <div class="row align-items-center">
+                            <div class="col-lg-7 col-md-8 col-12">
+                                <div class="product-sorting">
+                                    <label for="sorting">Ordenar por:</label>
+                                    <select class="form-control" id="sorting">
+                                        <option>Menor precio</option>
+                                        <option>Mayor precio</option>
+                                        <option>A - Z Orden</option>
+                                        <option>Z - A Orden</option>
+                                    </select>
+                                    <h3 class="total-show-product">Mostrando: <span>{{productos_cuenta}} productos</span></h3>
+                                </div>
+                            </div>
 
-    </div> <!-- row end.// -->
-    
-    
-    <nav class="mt-4" aria-label="Page navigation sample">
-      <ul class="pagination">
-        <li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
-        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
-      </ul>
-    </nav>
-    
-        </main> <!-- col.// -->
-    
+                        </div>
+                    </div>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-grid" role="tabpanel"
+                            aria-labelledby="nav-grid-tab">
+                            <div class="row">
+
+                                {% for producto in productos %}
+                                <!-- Ficha de producto -->
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <!-- detalle de producto -->
+                                    <div class="single-product">
+                                        <div class="product-image">
+                                            <img src="{{producto.imagenes.url}}" alt="#">
+                                            <div class="button">
+                                                <a href="{{producto.get_url}}" class="btn"><i
+                                                        class="lni lni-cart"></i> Agregar al carrito</a>
+                                            </div>
+                                        </div>
+                                        <div class="product-info">
+                                            <span class="category">{{producto.coleccion}}</span>
+                                            <h4 class="title">
+                                                <a href="{{producto.get_url}}">{{producto.producto_nombre}}</a>
+                                            </h4>
+                                            <div class="price">
+                                                <span>$ {{producto.precio}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Fin detalle de producto -->
+                                </div>
+                                <!-- Fin Ficha de producto -->
+                                {% endfor %}
+                                
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <!-- Pagination -->
+                                    <div class="pagination left">
+                                        <ul class="pagination-list">
+                                            <li><a href="javascript:void(0)">1</a></li>
+                                            <li class="active"><a href="javascript:void(0)">2</a></li>
+                                            <li><a href="javascript:void(0)">3</a></li>
+                                            <li><a href="javascript:void(0)">4</a></li>
+                                            <li><a href="javascript:void(0)"><i
+                                                        class="lni lni-chevron-right"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <!--/ End Pagination -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    
-    </div> <!-- container .//  -->
-    </section>
-    <!-- ========================= SECTION CONTENT END// ========================= -->
+</section>
 
+<!-- End Product Grids -->
+ 
 {% endblock %}
