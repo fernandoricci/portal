@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block content%}
+
+    <!-- Area de contacto -->
+    <section id="contact-us" class="contact-us section">
+        <div class="container">
+            <div class="contact-head">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title">
+                            <h2>Contactate con nosotros</h2>
+                            <p>There are many variations of passages of Lorem
+                                Ipsum available, but the majority have suffered alteration in some form.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-12 col-12">
+                            <div class="single-info-head">
+                                <!-- Bloque Dirección -->
+                                <div class="single-info">
+                                    <i class="lni lni-map"></i>
+                                    <h3>Dirección</h3>
+                                    <ul>
+                                        <li>Chile 460,<br> Ciudad Autónoma de Buenos Aires, Argentina.</li>
+                                    </ul>
+                                </div>
+                                <!-- Fin Bloque Dirección -->
+                                <!-- Bloque Telefono -->
+                                <div class="single-info">
+                                    <i class="lni lni-phone"></i>
+                                    <h3>Llamanos</h3>
+                                    <ul>
+                                        <li><a href="tel:+54108002224682">+54 1 0800 222 INTA (4682) (Gratis)</a></li>
+                                        <li><a href="tel:+54143390600">+54 1 4339 0600</a></li>
+                                    </ul>
+                                </div>
+                                <!-- Fin Bloque Telefono -->
+                                <!-- Bloque Email -->
+                                <div class="single-info">
+                                    <i class="lni lni-envelope"></i>
+                                    <h3>Escribinos</h3>
+                                    <ul>
+                                        <li><a href="mailto:libreria@inta.gob.ar">libreria@inta.gob.ar</a>
+                                        </li>
+                                        <li><a href="mailto:0800@inta.gob.ar">0800@inta.gob.ar</a></li>
+                                    </ul>
+                                </div>
+                                <!-- Fin bloque Email -->
+                            </div>
+                        </div>
+                        <!-- Formulario de contacto -->
+                        <div class="col-lg-8 col-md-12 col-12">
+                            <div class="contact-form-head">
+                                <div class="form-main">
+                                    <form class="form" method="post" action="assets/mail/mail.php">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <input name="name" type="text" placeholder="Nombre"
+                                                        required="required">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <input name="subject" type="text" placeholder="Asunto"
+                                                        required="required">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <input name="email" type="email" placeholder="Indique si Email"
+                                                        required="required">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <input name="phone" type="text" placeholder="Su Teléfono"
+                                                        required="required">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group message">
+                                                    <textarea name="message" placeholder="Deje su mensaje"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group button">
+                                                    <button type="submit" class="btn ">Enviar Mensaje</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Fin Formulario de contacto -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Fin Area de contacto -->
+
+{% endblock %}

@@ -39,3 +39,6 @@ def producto_detalle(request, coleccion_slug, producto_slug):
     }
         
     return render(request, 'tienda/producto_detalle.html', context)
+
+def contacto(request):
+    return render(request, 'tienda/contacto.html')
