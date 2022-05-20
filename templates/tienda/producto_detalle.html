@@ -50,17 +50,30 @@
                             <div class="bottom-content">
                                 <div class="row align-items-end">
                                     <div class="col-lg-4 col-md-4 col-12">
-                                        <div class="button cart-button">
+                                        <div>
                                             {% if producto_unico.stock <= 0 %}
-                                                <button class="btn-red" style="width: 100%;">Producto Agotado</button>
+                                                <div class="cart-button">
+                                                    <a href="" class="btn btn-red disabled">
+                                                        <i class="lni lni-bolt-alt"></i>Producto Agotado</a>
+                                                </div>
                                             {% else %}
-                                                <button class="btn" style="width: 100%;">Agregar al carrito</button>
+                                                {% if en_carrito %}
+                                                    <div class="cart-button text-center">
+                                                        <a href="{% url 'carrito' %}" class="btn-grn">
+                                                            <i class="lni lni-cart-full"></i> En el carrito</a>
+                                                    </div>
+                                                {% else %}
+                                                    <div class="cart-button">
+                                                        <a href="{% url 'agregar_carrito' producto_unico.id %}" class="btn">
+                                                            <i class="lni lni-cart"></i> Agregar al carrito</a>
+                                                    </div>
+                                                {% endif %}
                                             {% endif %}   
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-12">                                        
                                         <div class="wish-button">
-                                            <button class="btn"><i class="lni lni-heart"></i>Agregar a la lista</button>  
+                                            <a href="" class="btn"><i class="lni lni-heart"></i>Agregar a la lista</a>  
                                         </div>
                                     </div>                                    
                                 </div>

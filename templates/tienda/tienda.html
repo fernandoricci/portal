@@ -87,7 +87,7 @@
                                         <option>A - Z Orden</option>
                                         <option>Z - A Orden</option>
                                     </select>
-                                    <h3 class="total-show-product">Mostrando: <span>{{productos_cuenta}} productos</span></h3>
+                                    <h3 class="total-show-product">Mostrando: <span>{{productos_cantidad}} productos</span></h3>
                                 </div>
                             </div>
 
@@ -98,48 +98,69 @@
                             aria-labelledby="nav-grid-tab">
                             <div class="row">
 
-                                {% for producto in productos %}
-                                <!-- Ficha de producto -->
-                                <div class="col-lg-4 col-md-6 col-12">
-                                    <!-- detalle de producto -->
-                                    <div class="single-product">
-                                        <div class="product-image">
-                                            <img src="{{producto.imagenes.url}}" alt="#">
-                                            <div class="button">
-                                                <a href="{{producto.get_url}}" class="btn"><i
-                                                        class="lni lni-cart"></i> Agregar al carrito</a>
+                                {% if productos %}
+
+                                    {% for producto in productos %}
+                                    <!-- Ficha de producto -->
+                                    <div class="col-lg-4 col-md-6 col-12">
+                                        <!-- detalle de producto -->
+                                        <div class="single-product">
+                                            <div class="product-image">
+                                                <img src="{{producto.imagenes.url}}" alt="#">
+                                                <div class="button">
+                                                    <a href="{{producto.get_url}}" class="btn"><i
+                                                            class="lni lni-cart"></i> Agregar al carrito</a>
+                                                </div>
+                                            </div>
+                                            <div class="product-info">
+                                                <span class="category">{{producto.coleccion}}</span>
+                                                <h4 class="title">
+                                                    <a href="{{producto.get_url}}">{{producto.producto_nombre}}</a>
+                                                </h4>
+                                                <div class="price">
+                                                    <span>$ {{producto.precio}}</span>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="product-info">
-                                            <span class="category">{{producto.coleccion}}</span>
-                                            <h4 class="title">
-                                                <a href="{{producto.get_url}}">{{producto.producto_nombre}}</a>
-                                            </h4>
-                                            <div class="price">
-                                                <span>$ {{producto.precio}}</span>
-                                            </div>
-                                        </div>
+                                        <!-- Fin detalle de producto -->
                                     </div>
-                                    <!-- Fin detalle de producto -->
-                                </div>
-                                <!-- Fin Ficha de producto -->
-                                {% endfor %}
+                                    <!-- Fin Ficha de producto -->
+                                    {% endfor %}
+
+                                {% else %}
+                                    <div>
+                                        <h4>No se econtraron productos con los criterios proporcionados</h4>
+                                    </div>
+                                {% endif%}
                                 
                             </div>
                             <div class="row">
                                 <div class="col-12">
-                                    <!-- Pagination -->
+                                    <!-- Paginacion -->
                                     <div class="pagination left">
-                                        <ul class="pagination-list">
-                                            <li><a href="javascript:void(0)">1</a></li>
-                                            <li class="active"><a href="javascript:void(0)">2</a></li>
-                                            <li><a href="javascript:void(0)">3</a></li>
-                                            <li><a href="javascript:void(0)">4</a></li>
-                                            <li><a href="javascript:void(0)"><i
-                                                        class="lni lni-chevron-right"></i></a></li>
-                                        </ul>
+                                        {% if productos.has_other_pages %}
+                                            <ul class="pagination-list">
+                                                {% if productos.has_previous %}
+                                                    <li ><a href="?page={{productos.previous_page_number}}"><i
+                                                        class="lni lni-chevron-left"></i></a></li>                                                  
+                                                {% endif %}
+
+                                                {% for pagina in productos.paginator.page_range %}
+                                                    {% if productos.number == pagina %}
+                                                        <li class="active"><a href="#">{{pagina}}</a></li>
+                                                    {% else %}
+                                                        <li class=""><a href="?page={{pagina}}">{{pagina}}</a></li>
+                                                    {% endif %}
+                                                {% endfor %}
+                                                
+                                                {% if productos.has_next %}
+                                                    <li><a href="?page={{productos.next_page_number}}"><i
+                                                            class="lni lni-chevron-right"></i></a></li>
+                                                {% endif %}
+                                            </ul>
+                                        {% endif %}
                                     </div>
-                                    <!--/ End Pagination -->
+                                    <!--/ Fin Paginacion -->
                                 </div>
                             </div>
                         </div>

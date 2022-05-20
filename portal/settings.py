@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'coleccion', #agrego la app para la gestion de colecciones del portal
     'cuentas', #agrego la app cuentas para la gestion de usuarios del portal
     'tienda', #agrego la app tienda para la gestion productos
+    'carrito', #agrego la app tienda para la gestion de los carritos de compras
 ]
 
 MIDDLEWARE = [
@@ -66,6 +67,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'coleccion.context_processors.menu_links',
+                'carrito.context_processors.counter',
             ],
         },
     },

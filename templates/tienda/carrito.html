@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <!-- Shopping Cart -->
+    <div class="shopping-cart section">
+        <div class="container">
+
+            {% if not itemscarrito %}
+                <h2 class="text-center">El carrito de compras esta vacio</h2>
+                <br>
+                <div class="button text-center">
+                    <a href="{% url 'tienda' %}" class="btn btn-alt">Continuar comprando</a>
+                </div>
+            {% else %}
+                <div class="cart-list-head">
+                    <!-- Cart List Title -->
+                    <div class="cart-list-title">
+                        <div class="row">
+                            <div class="col-lg-1 col-md-1 col-12">
+
+                            </div>
+                            <div class="col-lg-4 col-md-3 col-12">
+                                <p>Título</p>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-12">
+                                <p>Cantidad</p>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-12">
+                                <p>Precio</p>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-12">
+                                <p>Total</p>
+                            </div>
+                            <div class="col-lg-1 col-md-2 col-12">
+                                <p>Remover</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Cart List Title -->
+
+                    <!-- Lista de Items del Carrito -->
+                    {% for itemcarrito in itemscarrito %}
+                    <div class="cart-single-list">
+                        <div class="row align-items-center">
+                            <div class="col-lg-1 col-md-1 col-12">
+                                <a href="{{itemcarrito.producto.get_url}}"><img src="{{itemcarrito.producto.imagenes.url}}" alt="#"></a>
+                            </div>
+                            <div class="col-lg-4 col-md-3 col-12">
+                                <h5 class="product-name"><a href="{{itemcarrito.producto.get_url}}">
+                                    {{itemcarrito.producto.producto_nombre}}</a></h5>
+                                <p class="product-des">
+                                    <span><em>Type:</em> Mirrorless</span>
+                                    <span><em>Color:</em> Black</span>
+                                </p>
+                            </div>
+
+                            <div class="col-lg-2 col-md-2 col-12">
+                                <div class="input-group input-spinner">
+                                    <div class="input-group-prepend">
+                                        <a href="{% url 'quitar_carrito' itemcarrito.producto.id %}" class="btn btn-light" type="button" id="button-plus"> <i class="fa fa-minus"></i> </a>
+                                    </div>
+                                    <p class="product-des">
+                                        <span style="padding-top: 5px; width: 40px; text-align: center;">{{itemcarrito.cantidad}}</span>
+                                    </p>
+                                    <div class="input-group-append">
+                                        <a href="{% url 'agregar_carrito' itemcarrito.producto.id %}" class="btn btn-light" type="button" id="button-minus"> <i class="fa fa-plus"></i> </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-2 col-md-2 col-12">
+                                <p>$ {{itemcarrito.producto.precio}}</p>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-12">
+                                <p>$ {{itemcarrito.subtotal}}</p>
+                            </div>
+                            <div class="col-lg-1 col-md-2 col-12">
+                                <a class="remove-item" href="{% url 'quitar_item' itemcarrito.producto.id %}"><i class="lni lni-close"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <!-- Fin Lista de Items del Carrito -->
+                    
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Total Amount -->
+                        <div class="total-amount">
+                            <div class="row">
+                                <div class="col-lg-8 col-md-6 col-12">
+                                    <div class="left">
+                                        <div class="coupon">
+                                            <form action="#" target="_blank">
+                                                <input name="Coupon" placeholder="Enter Your Coupon">
+                                                <div class="button">
+                                                    <button class="btn">Apply Coupon</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <div class="right">
+                                        <ul>
+                                            <li>Subtotal<span>$ {{total}}</span></li>
+                                            <li>IVA<span>$ {{iva}}</span></li>
+                                            <li class="last">Precio Final<span>$ {{preciofinal}}</span></li>
+                                        </ul>
+                                        <div class="button">
+                                            <p class="text-center mb-3 payment-gateway">
+                                                <img src="{% static 'images/footer/credit-cards-footer.png' %}" alt="#">
+                                            </p>
+                                            <a href="checkout.html" class="btn">Checkout</a>
+                                            <a href="{% url 'tienda' %}" class="btn btn-alt">Continuar comprando</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--/ End Total Amount -->
+                    </div>
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+    <!--/ End Shopping Cart -->
+
+{% endblock %}

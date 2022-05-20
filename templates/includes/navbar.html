@@ -64,24 +64,24 @@
                     <div class="col-lg-5 col-md-7 d-xs-none">
                         <!-- Buscador principal -->
                         <div class="main-menu-search">
+
                             <!-- buscador del navbar -->
                             <div class="navbar-search search-style-5">
-                                <div class="search-select">
-                                    <div class="select-position">
-                                        <select id="select1">
-                                            <option selected>Todas</option>
-                                            {% for coleccion in links %}
-                                            <option>{{coleccion.coleccion_nombre}}</option>
-                                            {% endfor %}
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="search-input">
-                                    <input type="text" placeholder="Buscar">
-                                </div>
-                                <div class="search-btn">
-                                    <button><i class="lni lni-search-alt"></i></button>
-                                </div>
+                                
+                                <!-- Barra de busqueda -->
+                                <div class="col-lg col-md-6 col-sm-12 col">
+                                    <form action="{% url 'busqueda' %}" class="search">
+                                        <div class="input-group w-100">
+                                            <input type="text" class="form-control" style="width:60%;" placeholder="Buscar" name="keyword">                            
+                                            <div class="input-group-append">
+                                            <button class="btn btn-primary" type="submit">
+                                                <i class="lni lni-search-alt"></i>
+                                            </button>
+                                            </div>
+                                        </div>
+                                    </form> 
+                                </div> <!-- Fin barra de busqueda -->
+                                
                             </div>
                             <!-- Fin de buscador del navbar -->
                         </div>
@@ -104,18 +104,21 @@
                                     </a>
                                 </div>
                                 <!-- Fin Lista de favoritos -->
+
                                 <!-- Carrito de compras -->
                                 <div class="cart-items">
-                                    <a href="javascript:void(0)" class="main-btn">
+                                    <a href="{% url 'carrito' %}" class="main-btn">
                                         <i class="lni lni-cart"></i>
-                                        <span class="total-items">0</span>
+                                        <span class="total-items">{{carrito_cuenta}}</span>
                                     </a>    
                                 <!-- Fin del carrito de compras-->
                                 </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <!-- Fin Barra de Navegación intermedia  -->

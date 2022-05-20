@@ -23,4 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name="home"), #path para el home del sitio
     path('tienda/', include('tienda.urls')),
+    path('carrito/', include('carrito.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
