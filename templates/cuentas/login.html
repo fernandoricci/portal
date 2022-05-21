@@ -5,6 +5,7 @@
 <!-- Area de Login -->
 <div class="account-login section">
     {% if request.GET.command == 'verification' %}
+        <!--
         <div class="container mx-auto alert alert-info" role="alert" style="max-width: 380px; margin-top: 10px;">
             <h5>Muchas gracias por registrarse en nuestra libreria virtual!</h5>
             <br>
@@ -18,6 +19,29 @@
             <p class="text-center"><a href="{% url 'login' %}"> Iniciar Sesión</a></p>
 
         </div>
+        -->
+
+        <!-- Confirmación de envio de mail -->
+        <div class="maill-success">
+            <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                <div class="success-content">
+                    <i class="lni lni-envelope"></i>
+                    <h2>Muchas gracias por registrarse en nuestra libreria virtual!</h2>
+                    <p>Te hemos enviado un email a la dirección que ingresaste 
+                        <b>[{{ request.GET.email }}]</b> para verificar tu cuenta</p>
+                    <p>Si ya verificaste tu cuenta, podes ir al login.</p>
+                    <div class="button">
+                    <a href="{% url 'login' %}" class="btn">Iniciar Sesión</a>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- Fin Confirmación de envio de mail -->
+
 
     {% else %}
 

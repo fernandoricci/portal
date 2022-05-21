@@ -45,7 +45,7 @@ def registro(request):
             send_email = EmailMessage(mail_subject, body, to=[to_email])
             send_email.send()
 
-            messages.success(request, 'Se registro el usuario exitosamente')
+            #messages.success(request, 'Se registro el usuario exitosamente')
             return redirect('/cuentas/login/?command=verification&email='+email)
 
     context = {
