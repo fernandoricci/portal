@@ -44,7 +44,7 @@ class Account(AbstractBaseUser):
     last_name = models.CharField(max_length=50)
     username = models.CharField(max_length=50, unique=True)
     email = models.CharField(max_length=100, unique=True)
-    phone_numbre = models.CharField(max_length=50)
+    phone_number = models.CharField(max_length=50)
 
     #Atributos de Django
     date_joined = models.DateTimeField(auto_now_add=True)

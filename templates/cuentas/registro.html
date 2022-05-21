@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+ <!-- Registro de usuario -->
+ <div class="account-login section">
+    
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3 col-md-10 offset-md-1 col-12">
+                  
+                <div class="register-form">                               
+                    <div class="title">
+                        {% include 'includes/alerts.html' %}   
+                        <h3>Registro de usuario</h3>
+                        <p>El registro lleva menos de un minuto, pero le da control total sobre sus pedidos.</p>
+                    </div>
+                    <form action="{% url 'registro' %}"" class="row" method="POST">
+                        {% csrf_token %}
+                        
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="reg-fn">Nombre</label>
+                                {{ form.first_name }}                                
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="reg-ln">Apellido</label>
+                                {{ form.last_name }}  
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="reg-email">E-mail</label>
+                                {{ form.email }}  
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="reg-phone">Teléfono</label>
+                                {{ form.phone_number }}  
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="reg-pass">Password</label>
+                                {{ form.password }}  
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="reg-pass-confirm">Confirmar Password</label>
+                                {{ form.confirmar_password }}  
+                            </div>
+                        </div>
+                        <div class="button">
+                            <button class="btn" type="submit">Registrar</button>
+                        </div>
+                        <div>
+                            <span class="outer-link">{{ form.email.errors }}</span>
+                            <span class="outer-link">{{ form.non_field_errors }}</span>                        
+                        </div>
+                        <span class="outer-link">¿Ya tiene una cuenta registrada? <a href="{% url 'login' %}"> Inicie sesión</a></span>                        
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Fin de registro de usuario -->
+
+{% endblock %}

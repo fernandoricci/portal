@@ -56,6 +56,17 @@
     <script src="{% static 'js/main.js' %}"></script>
     
     <script type="text/javascript">
+
+        // jquery code
+        $(document).ready(function(){
+
+            //===== Función para que desaparezcan los mensajes a los 4segundos o 4000
+            setTimeout(function(){
+                $('#message').fadeOut('slow')
+            }, 4000)
+
+        });
+            
         //========= Hero Slider 
         tns({
             container: '.hero-slider',
