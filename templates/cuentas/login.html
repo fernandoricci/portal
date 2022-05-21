@@ -1,6 +1,71 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Pagina de Login</h2>
+
+<!-- Area de Login -->
+<div class="account-login section">
+    {% if request.GET.command == 'verification' %}
+        <div class="container mx-auto alert alert-info" role="alert" style="max-width: 380px; margin-top: 10px;">
+            <h5>Muchas gracias por registrarse en nuestra libreria virtual!</h5>
+            <br>
+            Te hemos enviado un email a la dirección que ingresaste 
+            <b>[{{ request.GET.email }}]</b> para verificar tu cuenta 
+
+            <br><br>
+
+            Si ya verificaste tu cuenta, puedes ir al login. 
+            <br><br>
+            <p class="text-center"><a href="{% url 'login' %}"> Iniciar Sesión</a></p>
+
+        </div>
+
+    {% else %}
+
+        <div class="container">
+            
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3 col-md-10 offset-md-1 col-12">
+                    
+                    <form action="{% url 'login' %} "class="card login-form" method="POST">
+                        {% csrf_token %}
+
+                        <div class="card-body">
+                            {% include 'includes/alerts.html' %}
+                            <div class="title">
+                                <h3>Inicia sesión</h3>
+                                <p>Ingresa tu usuario y tu clave para inicar sesión en el portal.</p>
+                            </div>
+
+                            <div class="form-group input-group">
+                                <label for="reg-fn">Email</label>
+                                <input class="form-control" type="email" id="reg-email" name="email" required>
+                            </div>
+
+                            <div class="form-group input-group">
+                                <label for="reg-fn">Clave</label>
+                                <input class="form-control" type="password" id="reg-pass" name="password" required>
+                            </div>
+                            
+                            <div class="d-flex flex-wrap justify-content-between bottom-content">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input width-auto" id="exampleCheck1">
+                                    <label class="form-check-label">Recordarme</label>
+                                </div>
+                                <a class="lost-pass" href="#">¿Olvidaste tu Clave?</a>
+                            </div>
+                            
+                            <div class="button">
+                                <button class="btn" type="submit">Login</button>
+                            </div>
+                            <p class="outer-link">¿No tenes una cuenta? <a href="{% url 'registro' %}">Registrate ahora</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+<!-- Fin Login Area -->
 
 {% endblock %}

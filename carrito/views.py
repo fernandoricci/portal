@@ -57,6 +57,8 @@ def quitar_item(request, producto_id):
     return redirect('carrito')
 
 def carrito(request, total=0, cantidad=0, itemscarrito=None):
+    iva=0
+    preciofinal=0
     try:
         carrito = Carrito.objects.get(carrito_id=_carrito_id(request))
         itemscarrito = ItemCarrito.objects.filter(carrito=carrito, es_activo=True)

@@ -31,10 +31,13 @@
                     </div>
                     <div class="col-lg-4 col-md-4 col-12">
                         <div class="top-end">
+                            
+                            {% if user.id is None %}
                             <div class="user">
                                 <i class="lni lni-user"></i>
-                                Hola!
+                                Hola Visitante!
                             </div>
+                                                        
                             <ul class="user-login">
                                 <li>
                                     <a href="{% url 'login' %}">Login</a>
@@ -43,6 +46,22 @@
                                     <a href="{% url 'registro' %}">Registrese</a>
                                 </li>
                             </ul>
+                            {% else %}
+                                <div class="user">
+                                    <i class="lni lni-user"></i>
+                                    Hola {{user.first_name}}
+                                </div>
+                                                            
+                                <ul class="user-login">
+                                    <li>
+                                        <a href="#">Mi espacio</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'logout' %}">Cerrar</a>
+                                    </li>
+                                </ul>
+                            {% endif %}
+
                         </div>
                     </div>
                 </div>

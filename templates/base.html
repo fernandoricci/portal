@@ -21,6 +21,24 @@
     <link rel="stylesheet" href="{% static 'css/glightbox.min.css' %}" />
     <link rel="stylesheet" href="{% static 'css/main.css' %}" />
 
+    <!-- ========================= Zona JS ========================= -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/tiny-slider.js' %}"></script>
+    <script src="{% static 'js/glightbox.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/jquery-2.0.0.min.js' %}"></script>
+
+    <script type="text/javascript">
+
+        // jquery code
+
+            //===== Función para que desaparezcan los mensajes a los 4segundos o 4000
+            setTimeout(function(){
+                $('#message').fadeOut('slow')
+                }, 4000)
+        
+    </script>
+
 </head>
 <body>
 
@@ -49,24 +67,10 @@
         <i class="lni lni-chevron-up"></i>
     </a>
 
-    <!-- ========================= Zona JS ========================= -->
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/tiny-slider.js' %}"></script>
-    <script src="{% static 'js/glightbox.min.js' %}"></script>
-    <script src="{% static 'js/main.js' %}"></script>
+   
     
     <script type="text/javascript">
 
-        // jquery code
-        $(document).ready(function(){
-
-            //===== Función para que desaparezcan los mensajes a los 4segundos o 4000
-            setTimeout(function(){
-                $('#message').fadeOut('slow')
-            }, 4000)
-
-        });
-            
         //========= Hero Slider 
         tns({
             container: '.hero-slider',

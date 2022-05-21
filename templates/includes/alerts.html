@@ -1,7 +1,8 @@
-{% if massages %}
 
+{% if messages %}
+    
     <div id="message" class="container">
-
+        
         {% for message in messages %}
         <div {% if message.tags %} class="alert alert-{{ message.tags }}" {% endif %} role="alert">
             {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %} Importante: {% endif %}
