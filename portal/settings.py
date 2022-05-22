@@ -31,12 +31,18 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    #'django.contrib.admin', # --> Remuevo para usar la plantilla de DJANGO-MATERIAL-ADMIN
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    #De terceros
+    'material', # Plantilla DJANGO-MATERIAL-ADMIN
+    'material.admin', # Plantilla DJANGO-MATERIAL-ADMIN
+
+    #Propias
     'coleccion', #agrego la app para la gestion de colecciones del portal
     'cuentas', #agrego la app cuentas para la gestion de usuarios del portal
     'tienda', #agrego la app tienda para la gestion productos
@@ -152,3 +158,26 @@ EMAIL_USE_TLS = True
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+## Configuración del Portal de ADMIN
+MATERIAL_ADMIN_SITE = {
+    'HEADER':  ('Portal de Administración de la Libreria Virtual del INTA'),  # Admin site header
+    'TITLE':  ('Libreria Virtual INTA'),  # Admin site title
+    'FAVICON':  '/images/favicon.ico',  # Admin site favicon (path to static should be specified)
+    #'MAIN_BG_COLOR':  'color',  # Admin site main color, css color should be specified
+    #'MAIN_HOVER_COLOR':  'color',  # Admin site main hover color, css color should be specified
+    #'PROFILE_PICTURE':  'path/to/image',  # Admin site profile picture (path to static should be specified)
+    'PROFILE_BG':  '/images/perfil_bg.jpg',  # Admin site profile background (path to static should be specified)
+    'LOGIN_LOGO':  '/images/logo_INTA.png',  # Admin site logo on login page (path to static should be specified)
+    'LOGOUT_BG':  '/images/admin_bg.jpg',  # Admin site background on login/logout pages (path to static should be specified)
+    'SHOW_THEMES':  False,  #  Show default admin themes button
+    'TRAY_REVERSE': True,  # Hide object-tools and additional-submit-line by default
+    'NAVBAR_REVERSE': True,  # Hide side navbar by default
+    'SHOW_COUNTS': True, # Show instances counts for each modelz
+    'APP_ICONS': {  # Set icons for applications(lowercase), includin 3rd party apps, {'application_name': 'material_icon_name', ...}
+        'sites': 'send',
+    },
+    'MODEL_ICONS': {  # Set icons for models(lowercase), including 3rd party models, {'model_name': 'material_icon_name', ...}
+        'site': 'contact_mail',
+    }
+}
