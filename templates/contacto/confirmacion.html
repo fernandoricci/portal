@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}    
+        
+        <!-- Confirmación de envio de mensaje-->
+        <div class="maill-success">
+            <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                <div class="success-content">
+                    <i class="lni lni-envelope"></i>
+                    <h2>Muchas gracias por contactarse con nuestra libreria virtual!</h2>
+                    <p>Hemos recibido la consulta que ingresaste y pronto nos contactaremos a traves de la cuenta de mail que especificaste</p>
+                    <p>Te invitamos mientras tanto a recorrer nuestra libreria virtual para que conozcas nuestras colecciones y materiales.</p>
+                    <div class="button">
+                    <a href="{% url 'tienda' %}" class="btn">Acceso a la Libreria</a>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- Fin Confirmación de envio de mensaje -->
+
+{% endblock %}

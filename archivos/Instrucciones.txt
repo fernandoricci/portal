@@ -1,4 +1,6 @@
 Usuario Administrador --> riccitelli.fernando@gmail.com
 password --> mini1234
 
-Seguir desde el video 151
+
+Instalar django-simple-captcha
+Instalar django-material-admin

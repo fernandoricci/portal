@@ -54,43 +54,52 @@
                         <div class="col-lg-8 col-md-12 col-12">
                             <div class="contact-form-head">
                                 <div class="form-main">
-                                    <form class="form" method="post" action="assets/mail/mail.php">
+                                    
+                                    <form class="form" method="POST" action="">
+                                        {% csrf_token %}
+                                        
                                         <div class="row">
+                                        
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <input name="name" type="text" placeholder="Nombre"
-                                                        required="required">
+                                                    {{ form.nombre }}
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <input name="subject" type="text" placeholder="Asunto"
-                                                        required="required">
+                                                    {{ form.asunto }}
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <input name="email" type="email" placeholder="Indique si Email"
-                                                        required="required">
+                                                    {{ form.mail }}
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <input name="phone" type="text" placeholder="Su Teléfono"
-                                                        required="required">
+                                                    {{ form.telefono }}
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group message">
-                                                    <textarea name="message" placeholder="Deje su mensaje"></textarea>
+                                                    {{ form.mensaje }}
                                                 </div>
                                             </div>
                                             <div class="col-12">
+                                                <div class="form-group message">
+                                                    {{ form.captcha }}
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-12">
                                                 <div class="form-group button">
                                                     <button type="submit" class="btn ">Enviar Mensaje</button>
+                                                    <span class="outer-link">{{ form.email.errors }}</span>
+                                                    <span class="outer-link">{{ form.non_field_errors }}</span>                        
                                                 </div>
                                             </div>
                                         </div>
+                                        
                                     </form>
                                 </div>
                             </div>

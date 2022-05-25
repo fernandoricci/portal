@@ -25,4 +25,6 @@ urlpatterns = [
     path('tienda/', include('tienda.urls')),
     path('carrito/', include('carrito.urls')),
     path('cuentas/', include('cuentas.urls')),
+    path('captcha/', include('captcha.urls')),
+    path('contacto/', include('contacto.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

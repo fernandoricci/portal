@@ -41,12 +41,14 @@ INSTALLED_APPS = [
     #De terceros
     'material', # Plantilla DJANGO-MATERIAL-ADMIN
     'material.admin', # Plantilla DJANGO-MATERIAL-ADMIN
+    'captcha', # Aplicación captcha para los formularios de contacto
 
     #Propias
     'coleccion', #agrego la app para la gestion de colecciones del portal
     'cuentas', #agrego la app cuentas para la gestion de usuarios del portal
     'tienda', #agrego la app tienda para la gestion productos
     'carrito', #agrego la app tienda para la gestion de los carritos de compras
+    'contacto', #agrego la app tienda para la gestion de los mensajes de contacto
 ]
 
 MIDDLEWARE = [
@@ -159,7 +161,7 @@ EMAIL_USE_TLS = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-## Configuración del Portal de ADMIN
+# Configuración del Portal de ADMIN
 MATERIAL_ADMIN_SITE = {
     'HEADER':  ('Portal de Administración de la Libreria Virtual del INTA'),  # Admin site header
     'TITLE':  ('Libreria Virtual INTA'),  # Admin site title
