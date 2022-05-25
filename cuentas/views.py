@@ -1,4 +1,6 @@
 from base64 import urlsafe_b64encode
+import email
+from email import message
 from email.message import EmailMessage
 from django.forms import EmailInput
 from django.shortcuts import redirect, render
@@ -62,7 +64,8 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            return redirect('home')
+            messages.success(request, 'Has iniciado sesión exitosamente')
+            return redirect('perfil')
         else:
             messages.error(request, 'Las credenciales son incorrectas')
             return redirect('login')
@@ -90,3 +93,70 @@ def activate(request, uidb64, token):
     else:
         messages.error(request, 'La activación es inválidad')
         return redirect('registro')
+
+@login_required(login_url='login')
+def perfil(request):
+    return render(request, 'cuentas/perfil.html')
+
+
+def olvidopassword(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        if Account.objects.filter(email=email).exists():
+            user = Account.objects.get(email__exact=email)
+        
+            current_site = get_current_site(request)
+            mail_subject = "Recuperar contraseña - Libreria Virtual INTA"
+            body = render_to_string('cuentas/resetear_clave_email.html', {
+                'user': user,
+                'domain': current_site,
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                'token': default_token_generator.make_token(user),
+            })
+
+            to_email = email
+            send_email = EmailMessage(mail_subject, body, to=[to_email])
+            send_email.send()
+
+            messages.success(request, 'Hemos enviado un correo electrónico a tu dirección de correo para que puedas reestablecer la contraseña')
+            return redirect('login')
+
+        else:
+            messages.error(request, 'La cuenta de usuario no existe')
+            return redirect('olvidopassword')
+
+    return render(request, 'cuentas/olvidopassword.html')
+
+
+def resetearclave_validate(request, uidb64, token):
+    try:
+        uid = urlsafe_base64_decode(uidb64).decode()
+        user = Account._default_manager.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, Account.DoesNotExist):
+        user = None
+
+    if user is not None and default_token_generator.check_token(user, token):
+        request.session['uid']=uid
+        messages.success(request, 'Por favor restablece tu contraseña')
+        return redirect('resetearPassword')
+    else:
+        messages.error(request, 'El link ha expirado')
+        return redirect('login')
+    
+def resetearPassword(request):
+    if request.method == 'POST':
+        password = request.POST['password']
+        confirm_password = request.POST['confirm_password']
+
+        if password == confirm_password:
+            uid = request.session.get('uid')
+            user = Account.objects.get(pk=uid)
+            user.set_password(password)
+            user.save()
+            messages.success(request, 'Su clave se ha reestablecido con éxito')
+            return redirect('login')
+        else:
+            messages.error(request, 'La contraseñas proporcionadas no concuerdan')
+            return redirect('resetarPassword')
+    else:
+        return render(request, 'cuentas/resetearpassword.html')

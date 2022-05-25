@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <section class="product-grids section">
+        {% include 'includes/alerts.html' %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-12">
+                    <!-- Barra lateral del menu -->
+                    <div class="product-sidebar">
+                        <div class="single-widget">
+                            <ul class="list">
+                                <li><a class="item" href="#"> Mis compras </a></li>
+                                <li><a class="item" href="#"> Configuración </a></li>                     
+                            </ul>
+                        </div>
+                        <div class="single-widget">
+                            <ul class="list">
+                                <li>
+                                    <i class="fa fa-power-off"></i><span></span> <a class="item" href="{% url 'logout' %}">Cerrar Sesión</a> 
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Fin Barra lateral del menu -->
+                </div>
+                <div class="col-lg-9 col-12">
+                    <div class="product-grids-head">
+                        <div class="product-grid-topbar">
+                            <div class="row align-items-center">
+                                <div class="col-lg-7 col-md-8 col-12">
+                                    <div class="product-sorting">
+                                        <h3 class="total-show-product">Aca va la data</h3>
+                                    </div>
+                                </div>
+    
+                            </div>
+                        </div>
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

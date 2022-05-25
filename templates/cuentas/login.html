@@ -5,21 +5,6 @@
 <!-- Area de Login -->
 <div class="account-login section">
     {% if request.GET.command == 'verification' %}
-        <!--
-        <div class="container mx-auto alert alert-info" role="alert" style="max-width: 380px; margin-top: 10px;">
-            <h5>Muchas gracias por registrarse en nuestra libreria virtual!</h5>
-            <br>
-            Te hemos enviado un email a la dirección que ingresaste 
-            <b>[{{ request.GET.email }}]</b> para verificar tu cuenta 
-
-            <br><br>
-
-            Si ya verificaste tu cuenta, puedes ir al login. 
-            <br><br>
-            <p class="text-center"><a href="{% url 'login' %}"> Iniciar Sesión</a></p>
-
-        </div>
-        -->
 
         <!-- Confirmación de envio de mail -->
         <div class="maill-success">
@@ -75,7 +60,7 @@
                                     <input type="checkbox" class="form-check-input width-auto" id="exampleCheck1">
                                     <label class="form-check-label">Recordarme</label>
                                 </div>
-                                <a class="lost-pass" href="#">¿Olvidaste tu Clave?</a>
+                                <a class="lost-pass" href="{% url 'olvidopassword' %}">¿Olvidaste tu Clave?</a>
                             </div>
                             
                             <div class="button">
