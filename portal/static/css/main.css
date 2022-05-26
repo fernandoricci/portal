@@ -8147,6 +8147,68 @@ blockquote span {
   text-decoration: underline;
 }
 
+/* User Dashboard */
+/* line 270, ../../proyecto/portal/portal/static/scss/_account-login.scss */
+.profile-dashboard .container {
+  margin-top: 100px;
+}
+
+/* line 274, ../../proyecto/portal/portal/static/scss/_account-login.scss */
+.profile-dashboard .counter-box {
+  display: block;
+  background: #f6f6f6;
+  padding: 40px 20px 37px;
+  text-align: center;
+}
+
+/* line 281, ../../proyecto/portal/portal/static/scss/_account-login.scss */
+.profile-dashboard .counter-box p {
+  margin: 5px 0 0;
+  padding: 0;
+  color: #909090;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* line 289, ../../proyecto/portal/portal/static/scss/_account-login.scss */
+.profile-dashboard .counter-box i {
+  font-size: 60px;
+  margin: 0 0 15px;
+  color: #d2d2d2;
+}
+
+/* line 295, ../../proyecto/portal/portal/static/scss/_account-login.scss */
+.profile-dashboard .counter {
+  display: block;
+  font-size: 32px;
+  font-weight: 700;
+  color: #666;
+  line-height: 28px;
+}
+
+/* line 303, ../../proyecto/portal/portal/static/scss/_account-login.scss */
+.profile-dashboard .counter-box.colored {
+  background: #3acf87;
+}
+
+/* line 307, ../../proyecto/portal/portal/static/scss/_account-login.scss */
+.profile-dashboard .counter-box.colored2 {
+  background: #f6f371;
+}
+
+/* line 311, ../../proyecto/portal/portal/static/scss/_account-login.scss */
+.profile-dashboard .counter-box.colored3 {
+  background: #cf8c3a;
+  color: #d2d2d2;
+}
+
+/* line 316, ../../proyecto/portal/portal/static/scss/_account-login.scss */
+.profile-dashboard .counter-box.colored p,
+.profile-dashboard .counter-box.colored i,
+.profile-dashboard .counter-box.colored .counter {
+  color: #fff;
+}
+
 /*======================================
 	Contact CSS
 ========================================*/

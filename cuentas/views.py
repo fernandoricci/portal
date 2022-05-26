@@ -2,10 +2,12 @@ from base64 import urlsafe_b64encode
 import email
 from email import message
 from email.message import EmailMessage
+from multiprocessing import context
+import profile
 from django.forms import EmailInput
-from django.shortcuts import redirect, render
-from .forms import RegistroForm
-from .models import Account
+from django.shortcuts import get_object_or_404, redirect, render
+from .forms import RegistroForm, UserForm, UserProfileForm
+from .models import Account, UserProfile
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.sites.shortcuts import get_current_site
@@ -33,6 +35,11 @@ def registro(request):
             user= Account.objects.create_user(first_name=first_name, last_name=last_name, username=username, email=email, password=password)
             user.phone_number = phone_number
             user.save()
+
+            profile = UserProfile()
+            profile.user_id = user.id
+            profile.profile_picture = 'default/default-user.png'
+            profile.save()
 
             current_site = get_current_site(request)
             mail_subject = "Activa tu cuenta de la Libreria Virtual del INTA"
@@ -96,7 +103,14 @@ def activate(request, uidb64, token):
 
 @login_required(login_url='login')
 def perfil(request):
-    return render(request, 'cuentas/perfil.html')
+
+    userprofile = UserProfile.objects.get(user_id=request.user.id)
+
+    context={
+        'userprofile':userprofile,
+    }
+
+    return render(request, 'cuentas/perfil.html', context)
 
 
 def olvidopassword(request):
@@ -160,3 +174,52 @@ def resetearPassword(request):
             return redirect('resetarPassword')
     else:
         return render(request, 'cuentas/resetearpassword.html')
+
+@login_required(login_url='login')
+def edit_profile(request):
+    userprofile = get_object_or_404(UserProfile, user=request.user)
+    if request.method == 'POST':
+        user_form = UserForm(request.POST, instance=request.user)
+        profile_form = UserProfileForm(request.POST, request.FILES, instance=userprofile)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, 'Su información fue guardada con exito')
+            return redirect('edit_profile')
+    else:
+        user_form = UserForm(instance=request.user)
+        profile_form = UserProfileForm(instance=userprofile)
+    
+    context = {
+        'user_form': user_form,
+        'profile_form': profile_form,
+        'userprofile': userprofile,
+    }
+
+    return render(request, 'cuentas/editarperfil.html', context)
+
+@login_required(login_url='login')
+def change_password(request):
+    if request.method == 'POST':
+        current_password = request.POST['current_password']
+        new_password = request.POST['new_password']
+        confirm_password = request.POST['confirm_password']
+
+        user = Account.objects.get(username__exact = request.user.username)
+
+        if new_password == confirm_password:
+            success = user.check_password(current_password)
+            if success:
+                user.set_password(new_password)
+                user.save()
+
+                messages.success(request, 'La contraseña se actualizo exitosamente')
+                return redirect('change_password')
+            else:
+                messages.error(request, 'Por favor ingrese un password válido')
+                return redirect('change_password')
+        else:
+            messages.error(request,'Las contraseñas no coinciden')
+            return redirect('change_password')
+
+    return render (request, 'cuentas/cambiarpassword.html')

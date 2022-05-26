@@ -1,0 +1,21 @@
+<div class="col-lg-3 col-12">
+    <!-- Barra lateral del menu -->
+    <div class="product-sidebar">
+        <div class="single-widget">
+            <ul class="list">
+                <li><a class="item" href="{% url 'perfil' %}"> Inicio </a></li>
+                <li><a class="item" href="#"> Mis compras </a></li>
+                <li><a class="item" href="{% url 'edit_profile' %}"> Editar Perfil </a></li>
+                <li><a class="item" href="{% url 'change_password' %}"> Cambiar Contraseña </a></li>                         
+            </ul>
+        </div>
+        <div class="single-widget">
+            <ul class="list">
+                <li>
+                    <i class="fa fa-power-off"></i><span></span> <a class="item" href="{% url 'logout' %}">Cerrar Sesión</a> 
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Fin Barra lateral del menu -->
+</div>

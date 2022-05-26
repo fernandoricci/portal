@@ -1,45 +1,33 @@
 {% extends 'base.html' %}
-{% block content %}
 
-    <section class="product-grids section">
-        {% include 'includes/alerts.html' %}
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-12">
-                    <!-- Barra lateral del menu -->
-                    <div class="product-sidebar">
-                        <div class="single-widget">
-                            <ul class="list">
-                                <li><a class="item" href="#"> Mis compras </a></li>
-                                <li><a class="item" href="#"> Configuración </a></li>                     
-                            </ul>
-                        </div>
-                        <div class="single-widget">
-                            <ul class="list">
-                                <li>
-                                    <i class="fa fa-power-off"></i><span></span> <a class="item" href="{% url 'logout' %}">Cerrar Sesión</a> 
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- Fin Barra lateral del menu -->
+{% block content %}
+<section class="profile-dashboard">
+    <div class="container rounded bg-white mt-5 mb-5">
+    {% include 'includes/alerts.html' %}
+        <div class="row">
+        {% include 'cuentas/perfil_barralateral.html' %}
+            <div class="four col-md-3">
+                <div class="counter-box colored">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span class="counter">212</span>
+                    <p>Compras realizadas</p>
                 </div>
-                <div class="col-lg-9 col-12">
-                    <div class="product-grids-head">
-                        <div class="product-grid-topbar">
-                            <div class="row align-items-center">
-                                <div class="col-lg-7 col-md-8 col-12">
-                                    <div class="product-sorting">
-                                        <h3 class="total-show-product">Aca va la data</h3>
-                                    </div>
-                                </div>
-    
-                            </div>
-                        </div>
-                    </div>                            
+            </div>
+            <div class="four col-md-3">
+                <div class="counter-box colored2">
+                    <i class="fa fa-comment"></i>
+                    <span class="counter">325</span>
+                    <p>Comentarios realizados</p>
+                </div>
+            </div>
+            <div class="four col-md-3">
+                <div class="counter-box">
+                    <img src="{{userprofile.profile_picture.url }}" alt="Imagen de Perfil" width="75" height="75" style="border-radius: 50%;">
+                    <p><span class="mb-0">{{user.email}}</span></p>
+                    <p>{{user.phone_number}}</p>
                 </div>
             </div>
         </div>
-    </section>
-
+    </div>
+</section>
 {% endblock %}
