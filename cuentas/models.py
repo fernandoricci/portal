@@ -1,7 +1,10 @@
+from cProfile import Profile
 import email
 import profile
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, User
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
 class MyAccountManager(BaseUserManager):
     def create_user(self, first_name, last_name, username, email, password=None):
@@ -96,3 +99,10 @@ class UserProfile(models.Model):
     
     def full_address(self):
         return f'{self.address_line_1}{self.address_line_2}'
+
+#SIGNALS - Señal para crear un perfil luego de crear una cuenta de usuario
+@receiver(post_save, sender=User)
+def ensure_profile_exists(sender, instance, **kwargs):
+    if kwargs.get('created', False):
+        Profile.objects.get_or_create(user=instance)
+        print("Se creo el usuario y su perfil fue enlazado")
