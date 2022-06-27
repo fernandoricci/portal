@@ -10,6 +10,8 @@ class Message(models.Model):
 
     class Meta:
         ordering =['created']
+        verbose_name = "mensaje"
+        verbose_name_plural = "mensajes"
 
 class ThreadManager(models.Manager):
     def find(self, user1, user2):
@@ -34,6 +36,8 @@ class Thread(models.Model):
 
     class Meta:
         ordering =['-updated']
+        verbose_name = "hilo"
+        verbose_name_plural = "hilos"
 
 def messages_changed(sender, **kwargs):
     instance = kwargs.pop("instance", None)
