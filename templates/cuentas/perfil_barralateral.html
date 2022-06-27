@@ -6,7 +6,14 @@
                 <li><a class="item" href="{% url 'perfil' %}"> Inicio </a></li>
                 <li><a class="item" href="#"> Mis compras </a></li>
                 <li><a class="item" href="{% url 'edit_profile' %}"> Editar Perfil </a></li>
-                <li><a class="item" href="{% url 'change_password' %}"> Cambiar Contraseña </a></li>                         
+                <li><a class="item" href="{% url 'change_password' %}"> Cambiar Contraseña </a></li>
+                <!-- Si es un usuario de staff muestro la lista de clientes que ya iniciarion chats sino
+                muestro la lista de personal de staff para iniciar un chat -->
+                {% if request.user.is_staff == True %}
+                    <li><a class="item" href="{% url 'messenger:list' %}"> Chat </a></li>   
+                {% else %}
+                    <li><a class="item" href="{% url 'messenger:profiles' %}"> Chat </a></li> 
+                {% endif%}                                           
             </ul>
         </div>
         <div class="single-widget">

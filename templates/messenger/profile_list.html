@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="profile-dashboard">
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            {% include 'cuentas/perfil_barralateral.html' %}
+            <div class="four col-md-9">
+				<div class="row">
+                {% for user in account_list %}
+                    {% if user.is_admin == True %}
+                        <div class="col-md-4 mt-2 mb-3 ">
+                            <div class="row p-1">
+                                <div class="col-md-12">
+                                    <img src="{{user.userprofile.profile_picture.url}}" alt="Imagen de Perfil" width="75" height="75" style="border-radius: 50%;">
+                                    <p class="profile-data">
+                                        <b>{{user|truncatechars:"25"}}</b><br>
+                                        <a href="{% url 'messenger:start' user.username %}">Chatear</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>                        
+                    {% endif %}
+				{% endfor %}
+				</div>
+			</div>
+		</div>
+    </div>
+</section>
+{% endblock %}

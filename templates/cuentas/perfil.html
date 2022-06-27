@@ -23,7 +23,7 @@
             <div class="four col-md-3">
                 <div class="counter-box">
                     <img src="{{userprofile.profile_picture.url }}" alt="Imagen de Perfil" width="75" height="75" style="border-radius: 50%;">
-                    <p><span class="mb-0">{{user.email}}</span></p>
+                    <p><span class="mb-0">{{user.email|truncatechars:"25"}}</span></p>
                     <p>{{user.phone_number}}</p>
                 </div>
             </div>

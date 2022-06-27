@@ -18,6 +18,8 @@ from django.urls import path, include
 from . import views #importo las vistas para poder cargarlas
 from django.conf.urls.static import static
 from django.conf import settings
+from messenger.urls import messenger_patterns
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,4 +29,5 @@ urlpatterns = [
     path('cuentas/', include('cuentas.urls')),
     path('captcha/', include('captcha.urls')),
     path('contacto/', include('contacto.urls')),
+    path('messenger/', include(messenger_patterns)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -223,3 +223,4 @@ def change_password(request):
             return redirect('change_password')
 
     return render (request, 'cuentas/cambiarpassword.html')
+

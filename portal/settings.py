@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'tienda', #agrego la app tienda para la gestion productos
     'carrito', #agrego la app tienda para la gestion de los carritos de compras
     'contacto', #agrego la app tienda para la gestion de los mensajes de contacto
+    'messenger', #agrego la app de mensajeria para los usuarios registrados
 ]
 
 MIDDLEWARE = [
