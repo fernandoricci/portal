@@ -152,8 +152,8 @@ MESSAGE_TAGS = {
 #Configuro el host de correo para el envio de mails
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'libreriavirtual209@gmail.com'
-EMAIL_HOST_PASSWORD = 'M1Libreri4Virtu4l!'
+#EMAIL_HOST_USER = 
+#EMAIL_HOST_PASSWORD =
 EMAIL_USE_TLS = True
 
 
