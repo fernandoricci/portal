@@ -1,4 +1,3 @@
-import imp
 from django.shortcuts import render #importo renderizar y desplegar el codigo html producido por django
 from tienda.models import Producto
 
