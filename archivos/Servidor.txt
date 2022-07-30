@@ -1,3 +1,0 @@
-usr = utn
-pass = dj4ng0
-grupo = grupoutn
