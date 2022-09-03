@@ -1,7 +1,5 @@
 from ast import keyword
 from multiprocessing import context
-import re
-from tkinter import E
 from unicodedata import category
 from urllib import request
 from django.shortcuts import render, get_object_or_404
